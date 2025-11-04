@@ -30,3 +30,11 @@ Fornecer uma ferramenta de **gerenciamento de tarefas baseada em metodologias á
 git clone https://github.com/nitolima963-hub/logistics-task-manager
 cd logistics-task-manager
 python app.py
+
+## 🔄 Gestão de Mudanças (Alteração de Escopo)
+
+**Motivação:**
+O cliente (startup de logística) solicitou a adição de um campo de prioridade (`Alta`, `Média`, `Baixa`) para otimizar o acompanhamento das tarefas críticas, demonstrando a adaptabilidade do projeto ágil.
+
+**Mudança Implementada:**
+Adição do campo `priority` (com valor padrão 'Média') ao modelo de tarefa, e atualização da documentação para refletir a nova funcionalidade.
