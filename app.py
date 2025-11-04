@@ -11,19 +11,17 @@ def get_tasks():
 @app.route("/tasks", methods=["POST"])
 def add_task():
     data = request.json
+    
+    # --- IMPLEMENTAÇÃO DA MUDANÇA (PRIORIDADE) ---
+    # 1. Garante que a tarefa tenha uma prioridade, com 'Média' como padrão
+    if 'priority' not in data:
+        data['priority'] = 'Média' 
+    
+    # 2. Adiciona um ID sequencial (Melhoria de Robustez)
+    if not data.get('id'):
+        new_id = len(tasks) + 1
+        data['id'] = new_id
+    # ---------------------------------------------
+        
     tasks.append(data)
     return jsonify(data), 201
-
-@app.route("/tasks/<int:index>", methods=["PUT"])
-def update_task(index):
-    data = request.json
-    tasks[index] = data
-    return jsonify(data)
-
-@app.route("/tasks/<int:index>", methods=["DELETE"])
-def delete_task(index):
-    task = tasks.pop(index)
-    return jsonify(task)
-
-if __name__ == "__main__":
-    app.run(debug=True)
